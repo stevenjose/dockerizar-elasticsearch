@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  logstash:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/logstash/logstash:7.6.0
+    volumes:
+      - ./logstash/data:/usr/share/data
+      - ./logstash/settings/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./logstash/settings/logstash-dev.conf:/usr/share/logstash/config/logstash-dev.conf
+      - ./logstash/logs:/usr/share/logstash/logs
+    command: ["logstash","-f", "config/logstash-dev.conf"]
+
+  kibana:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/kibana/kibana:7.6.0
+    ports:
+      - ${PORT_KIBANA}
+  filebeat:
+    depends_on:
+      - logstash
+    image: lopezajoseg/filebeat:v4
+    user: "root"
+    volumes:
+      - ./filebeat-docker/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./logs:/usr/share/filebeat/log-generatorg
+    command: ["filebeat","-e","-c", "/usr/share/filebeat/filebeat.yml"]
