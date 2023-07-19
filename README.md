@@ -6,7 +6,7 @@ Crear y correr el contenedor
 ```docker compose up```
 
 
-borrar el contenedor stop al contenedor 
+Borrar el contenedor stop al contenedor 
 
 ```docker compose down```
 
