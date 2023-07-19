@@ -1,12 +1,12 @@
 # dockerizar-elasticsearch
 Dockerizar elasticsearch, filebeat, kibana, logstash
 
-Crear y correr el contenedor 
+## Crear y correr el contenedor 
 
 ```docker compose up```
 
 
-Borrar el contenedor stop al contenedor 
+## Borrar el contenedor stop al contenedor 
 
 ```docker compose down```
 
