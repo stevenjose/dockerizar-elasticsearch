@@ -44,3 +44,4 @@ services:
       - ./filebeat-docker/filebeat.yml:/usr/share/filebeat/filebeat.yml
       - ./logs:/usr/share/filebeat/log-generatorg
     command: ["filebeat","-e","-c", "/usr/share/filebeat/filebeat.yml","-strict.perms=false"]
+    restart: always
