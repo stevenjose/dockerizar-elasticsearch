@@ -13,9 +13,6 @@ services:
     volumes:
       - ./elasticsearch/data:/usr/share/elasticsearch/data
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-    ports:
-      - "9200:9200"
-      - "9300:9300"
     restart: always
   logstash:
     depends_on:
@@ -42,5 +39,5 @@ services:
     user: "root"
     volumes:
       - ./filebeat-docker/filebeat.yml:/usr/share/filebeat/filebeat.yml
-      - ./logs:/usr/share/filebeat/log-generatorg
+      - D:/wildfly/standalone/log:/usr/share/filebeat/log-generatorg
     command: ["filebeat","-e","-c", "/usr/share/filebeat/filebeat.yml"]

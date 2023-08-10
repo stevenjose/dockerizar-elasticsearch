@@ -25,12 +25,12 @@ filebeat.inputs:
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
-    - ./log-generatorg/log-generator*.log
+    - ./log-generatorg/server*.log
     #- c:\programdata\elasticsearch\logs\*
 
   # Exclude lines. A list of regular expressions to match. It drops the lines that are
   # matching any regular expression from the list.
-  exclude_lines: ['^DEBUG']
+  exclude_lines: ['^(\d{4}-(\d{2}-)).*(DEBUG|WARN).*']
 
   # Include lines. A list of regular expressions to match. It exports the lines that are
   # matching any regular expression from the list.
@@ -52,7 +52,7 @@ filebeat.inputs:
   # for Java Stack Traces or C-Line Continuation
 
   # The regexp Pattern that has to be matched. The example pattern matches all lines starting with [
-  multiline.pattern: ^(DEBUG|INFO|ERROR|TRACE|FATAL|WARN).*
+  multiline.pattern: ^(\d{4}-(\d{2}-)).*(INFO|ERROR).*
 
   # Defines if the pattern set under pattern should be negated or not. Default is false.
   multiline.negate: true
