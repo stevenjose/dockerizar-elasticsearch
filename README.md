@@ -1,4 +1,4 @@
-# Dockerizar Elasticsearch
+# Dockerize Elasticsearch read log files from wildfly
 Dockerizar elasticsearch, filebeat, kibana, logstash
 
 ## Configuration files
