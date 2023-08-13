@@ -1,4 +1,9 @@
-# Dockerize Elasticsearch read log files from wildfly
+\
+\
+__Author:__ ***José Gregorio López***\
+__Email:__ ***lopezajoseg@gmail.com***
+
+## Dockerize Elasticsearch read log files from wildfly
 Dockerizar elasticsearch, filebeat, kibana, logstash
 
 ## Configuration files
