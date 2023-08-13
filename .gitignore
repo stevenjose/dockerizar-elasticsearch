@@ -1,2 +1,3 @@
 /elasticsearch/data
+/logstash/logs
 .idea
