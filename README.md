@@ -25,10 +25,5 @@ Dockerizar elasticsearch, filebeat, kibana, logstash
 - Entrar en la siguiente para ver manage de Kibana
 [localhost:5601](http://localhost:5601/)
 
-## Generar logs de pruebas 
-
-dentro de la carpeta logs ejecutar 
-```  java -jar .\log-generator-1.0.jar -l 100 -d 1000 ```
-
 
 <img src="./kibana.png" alt="MDN" />
