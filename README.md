@@ -8,7 +8,7 @@ Dockerizar elasticsearch, filebeat, kibana, logstash
 - Filebeat ruta: ./filebeat-docker/
 
 ## Path files wildfly
- - En archivo docker-compose.yml ir al apartado de volumenes de filebeat, y modificar el path con la ruta donde se encuentren los log ejemplo: ```- ruta-local-donde-estan-logs:/usr/share/filebeat/log-generatorg``` 
+ - En archivo docker-compose.yml ir al apartado de volumenes de filebeat, y modificar el path con la ruta donde se encuentren los log ejemplo: ```- patch-local:/usr/share/filebeat/log-generatorg```
 
 ## Create and run the container 
 
