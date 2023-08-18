@@ -8,7 +8,7 @@ services:
         hard: -1
     environment:
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
       - discovery.type=single-node
     volumes:
       - ./elasticsearch/data:/usr/share/elasticsearch/data
@@ -23,6 +23,8 @@ services:
       - ./logstash/settings/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/settings/logstash-dev.conf:/usr/share/logstash/config/logstash-dev.conf
       - ./logstash/logs:/usr/share/logstash/logs
+    environment: 
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
     command: ["logstash","-f", "config/logstash-dev.conf"]
     restart: always
   kibana:
@@ -39,5 +41,6 @@ services:
     user: "root"
     volumes:
       - ./filebeat-docker/filebeat.yml:/usr/share/filebeat/filebeat.yml
-      - D:/wildfly/standalone/log:/usr/share/filebeat/log-generatorg
-    command: ["filebeat","-e","-c", "/usr/share/filebeat/filebeat.yml"]
+      - C:/Users/Jose_Lopez/MERCATINL-DEV/wildfly-17.0.1.Final/standalone/log:/usr/share/filebeat/log-generatorg
+    command: ["filebeat","-e","-c", "/usr/share/filebeat/filebeat.yml","-strict.perms=false"]
+    restart: always
